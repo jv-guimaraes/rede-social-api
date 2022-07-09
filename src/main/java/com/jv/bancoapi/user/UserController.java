@@ -1,6 +1,6 @@
 package com.jv.bancoapi.user;
 
-import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,23 +18,23 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("/users")
-	public HashMap<String, User> gelAllUsers() {
+	public List<Usuario> gelAllUsers() {
 		return userService.getAllUsers();
 	}
 	
 	@GetMapping("/users/{id}")
-	public User getUser(@PathVariable String id) {
+	public Usuario getUser(@PathVariable String id) {
 		return userService.getUser(id);
 	}
 	
 	@PostMapping("/users")
-	public void addUser(@RequestBody User user) {
+	public void addUser(@RequestBody Usuario user) {
 		userService.addUser(user);
 	}
 	
-	@PutMapping("/users/{id}")
-	public void updateUser(@PathVariable String id, @RequestBody User user) {
-		userService.updateUser(id, user);
+	@PutMapping("/users")
+	public void updateUser(@RequestBody Usuario user) {
+		userService.updateUser(user);
 	}
 	
 	@DeleteMapping("/users/{id}")

@@ -1,15 +1,21 @@
 package com.jv.bancoapi.user;
 
-public class User {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Usuario {
+	@Id
 	private String id;
+	
 	private String name;
 	private String description;
 	
-	public User() {
+	public Usuario() {
 		
 	}
 	
-	public User(String id, String name, String description) {
+	public Usuario(String id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;

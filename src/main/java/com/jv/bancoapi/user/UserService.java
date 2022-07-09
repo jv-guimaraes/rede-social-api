@@ -1,37 +1,37 @@
 package com.jv.bancoapi.user;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 	
-	private HashMap<String, User> users = new HashMap<>();
+	@Autowired
+	private UserRepository userRepository;
 	
-	public UserService() {
-		users.put("iven", new User("iven", "Iven", "Estudante de medicina."));
-		users.put("maria", new User("maria", "Maria", "Olá! Sou uma estudande de emfermagem."));
-	}
-	
-	public HashMap<String, User> getAllUsers() {
+	public List<Usuario> getAllUsers() {
+		List<Usuario> users = new ArrayList<>();
+		userRepository.findAll().forEach(users::add);
 		return users;
 	}
 	
-	public User getUser(String id) {
-		return users.get(id);
+	public Usuario getUser(String id) {
+		return userRepository.findById(id).orElse(null);
 	}
 
-	public void addUser(User user) {
-		users.put(user.getId(), user);
+	public void addUser(Usuario user) {
+		userRepository.save(user);
 	}
 
-	public void updateUser(String id, User user) {
-		users.put(id, user);
+	public void updateUser(Usuario user) {
+		userRepository.save(user);
 	}
 
 	public void deleteUser(String id) {
-		users.remove(id);
+		userRepository.deleteById(id);
 	}
 	
 }
