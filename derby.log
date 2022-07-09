@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Jul 09 12:05:27 BRT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0181-e37e-7d26-000000a14e00 
+on database directory memory:C:\Users\sikko\Documents\Java\rede-social-api\79e62d8d-faf7-4068-9fec-0cd277c9e87c with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@659e0bfd 
+Loaded from file:/C:/Users/sikko/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Eclipse Adoptium
+java.runtime.version=17.0.3+7
+user.dir=C:\Users\sikko\Documents\Java\rede-social-api
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
