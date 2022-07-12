@@ -1,7 +1,13 @@
 package com.jv.bancoapi.user;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Usuario {
@@ -9,17 +15,24 @@ public class Usuario {
 	private String id;
 	
 	private String name;
-	private String description;
 	
-	public Usuario() {
-		
+	private String email;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="timestamp", nullable = false)
+	private Date timestamp;
+	
+	@PrePersist
+	private void onCreate() {
+		timestamp = new Date(System.currentTimeMillis());
 	}
+
+	public Usuario() {};
 	
-	public Usuario(String id, String name, String description) {
-		super();
+	public Usuario(String id, String name, String email) {
 		this.id = id;
 		this.name = name;
-		this.description = description;
+		this.email = email;
 	}
 	
 	public String getId() {
@@ -34,11 +47,11 @@ public class Usuario {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescription() {
-		return description;
+	public String getEmail() {
+		return email;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

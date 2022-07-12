@@ -17,29 +17,28 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/users")
+	@GetMapping("/user")
 	public List<Usuario> gelAllUsers() {
 		return userService.getAllUsers();
 	}
 	
-	@GetMapping("/users/{id}")
+	@GetMapping("/user/{id}")
 	public Usuario getUser(@PathVariable String id) {
 		return userService.getUser(id);
 	}
 	
-	@PostMapping("/users")
+	@PostMapping("/user")
 	public void addUser(@RequestBody Usuario user) {
 		userService.addUser(user);
 	}
 	
-	@PutMapping("/users")
+	@PutMapping("/user")
 	public void updateUser(@RequestBody Usuario user) {
 		userService.updateUser(user);
 	}
 	
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/user/{id}")
 	public void deleteUser(@PathVariable String id) {
 		userService.deleteUser(id);
 	}
-	
 }
