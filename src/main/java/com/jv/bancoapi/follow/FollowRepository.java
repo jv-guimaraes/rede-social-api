@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface FollowRepository extends CrudRepository<Follow, Long> {
-	public List<Follow> findByFollower(String follower);
+	public List<Follow> findByToId(String to);
 	
-	public List<Follow> findByFollowing(String following);
+	public List<Follow> findByFromId(String from);
 	
-	public int countByFollower(String follower);
+	public int countByFromId(String from);
 	
-	public int countByFollowing(String following);
+	public int countByToId(String to);
 }

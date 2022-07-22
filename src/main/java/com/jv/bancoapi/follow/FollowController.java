@@ -30,25 +30,25 @@ public class FollowController {
 	@GetMapping("/user/{userId}/following")
 	public List<String> getFollowing(@PathVariable String userId) {
 		List<String> list = new ArrayList<>();
-		for (Follow f : followRepository.findByFollower(userId)) list.add(f.getFollowing());
+		for (Follow f : followRepository.findByFromId(userId)) list.add(f.getToId());
 		return list;
 	}
 	
 	@GetMapping("/user/{userId}/followers")
 	public List<String> getFollowers(@PathVariable String userId) {
 		List<String> list = new ArrayList<>();
-		for (Follow f : followRepository.findByFollowing(userId)) list.add(f.getFollower());
+		for (Follow f : followRepository.findByToId(userId)) list.add(f.getFromId());
 		return list;
 	}
 	
 	@GetMapping("user/{id}/following/count")
 	public int getFollowingCount(@PathVariable String id) {
-		return followRepository.countByFollower(id);
+		return followRepository.countByFromId(id);
 	}
 	
 	@GetMapping("user/{id}/followers/count")
 	public int getFollowerCount(@PathVariable String id) {
-		return followRepository.countByFollowing(id);
+		return followRepository.countByToId(id);
 	}
 	
 }

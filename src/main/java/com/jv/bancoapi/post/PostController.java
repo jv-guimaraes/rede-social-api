@@ -25,7 +25,7 @@ public class PostController {
 	
 	@GetMapping("/user/{userId}/post")
 	public List<Post> getUserPosts(@PathVariable String userId) {
-		return postRepository.findByUserId(userId);
+		return postRepository.findByFkUserId(userId);
 	}
 	
 	@PostMapping("/user/{userId}/post")

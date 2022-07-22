@@ -1,5 +1,6 @@
 package com.jv.bancoapi.follow;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,30 +12,42 @@ public class Follow {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	private String follower;
-	private String following;
+	@Column(length = 50)
+	private String fromId;
 	
-	public Follow() {};
-		
-	public Follow(String follower, String following) {
-		this.follower = follower;
-		this.following = following;
+	@Column(length = 50)
+	private String toId;
+	
+	public Follow() {}
+
+	public Follow(String from, String to) {
+		super();
+		this.fromId = from;
+		this.toId = to;
 	}
 
-	public String getFollower() {
-		return follower;
+	public long getId() {
+		return id;
 	}
 
-	public void setFollower(String follower) {
-		this.follower = follower;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public String getFollowing() {
-		return following;
+	public String getFromId() {
+		return fromId;
 	}
 
-	public void setFollowing(String following) {
-		this.following = following;
+	public void setFromId(String fromId) {
+		this.fromId = fromId;
 	}
-	  
+
+	public String getToId() {
+		return toId;
+	}
+
+	public void setToId(String toId) {
+		this.toId = toId;
+	}
+	
 }
