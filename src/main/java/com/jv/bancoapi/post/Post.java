@@ -1,16 +1,15 @@
 package com.jv.bancoapi.post;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
+@DynamicUpdate
 public class Post {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -26,14 +25,14 @@ public class Post {
 	private String fkUserId;
 	
 	//@Column(name = "created_on", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	public Timestamp createdOn;
+	public String createdOn;
 	
 	public Post() {};
 	
-	public Post(String content, String userId) {
-		super();
+	public Post(String content, String fkUserId, String createdOn) {
 		this.content = content;
-		this.fkUserId = userId;
+		this.fkUserId = fkUserId;
+		this.createdOn = createdOn;
 	}
 
 	public long getId() {
@@ -76,11 +75,11 @@ public class Post {
 		this.fkUserId = fkUserId;
 	}
 
-	public Timestamp getCreatedOn() {
+	public String getCreatedOn() {
 		return createdOn;
 	}
 
-	public void setCreatedOn(Timestamp createdOn) {
+	public void setCreatedOn(String createdOn) {
 		this.createdOn = createdOn;
 	}
 
